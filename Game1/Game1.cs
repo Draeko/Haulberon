@@ -145,16 +145,16 @@ namespace Game1
                     EtatDuJeu = EcranMap.Update(graphics, gameTime);
                     break;
                 case Ecran.ChoixPersonnage:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu);
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
                 case Ecran.ChoixAction:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu);
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
                 case Ecran.ChoixCompetence:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu);
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
                 case Ecran.ChoixCible:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu);
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
                 case Ecran.Inventaire:
                     //EtatDuJeu = EcranInventaire.Update();

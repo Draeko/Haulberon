@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>F:/Dev/CSharp/Nouveau dossier/Game1/Content/curseurCombat.png</SourceFile>
-  <SourceTime>2018-11-26T16:31:37.1322528+01:00</SourceTime>
-  <DestFile>F:/Dev/CSharp/Nouveau dossier/Game1/Content/bin/DesktopGL/Content/curseurCombat.xnb</DestFile>
-  <DestTime>2018-12-02T16:25:54.8175325+01:00</DestTime>
+  <SourceFile>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/curseurCombatV2.png</SourceFile>
+  <SourceTime>2018-12-03T21:46:39.9102216+01:00</SourceTime>
+  <DestFile>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/bin/DesktopGL/curseurCombatV2.xnb</DestFile>
+  <DestTime>2018-12-03T21:52:03.3827232+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-09-23T23:55:52+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -4,27 +4,29 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/curseurCombat.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/combatMenu.spritefont</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/curseur.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Druide/druide0.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/EcranCombat.spritefont</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/element.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/FenetreEcranCombat.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Goupil/goupil0.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Goupil/goupil1.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Goupil/goupil2.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Goupil/goupil3.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Guerrier/guerrier0.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Mage/mage0.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/OptionMenu.spritefont</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/pv.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Renard/renard0.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Renard/renard1.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Renard/renard2.png</File>
-    <File>F:/Dev/CSharp/Nouveau dossier/Game1/Content/Renard/renard3.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/combatMenu.spritefont</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/curseur.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/curseurCombatV2.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/CurseurMenu.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Druide/druide0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/EcranCombat.spritefont</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/element.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/FenetreEcranCombat.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil1.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil2.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil3.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Guerrier/guerrier0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Mage/mage0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/OptionMenu.spritefont</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/pv.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard1.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard2.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

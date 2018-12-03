@@ -4,31 +4,28 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/../../../../../Pictures/Mono/curseurCombat.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/combatMenu.spritefont</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/curseur.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Druide/default.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/EcranCombat.spritefont</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/element.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/FenetreEcranCombat.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Goupil/goupil0.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Goupil/goupil1.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Goupil/goupil2.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Goupil/goupil3.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Guerrier/default.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Mage/mage0.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/OptionMenu.spritefont</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/pv.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Renard/renard0.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Renard/renard1.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Renard/renard2.png</File>
-    <File>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Renard/renard3.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/combatMenu.spritefont</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/curseur.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/curseurCombatV2.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/CurseurMenu.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Druide/druide0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/EcranCombat.spritefont</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/element.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/FenetreEcranCombat.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil1.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil2.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Goupil/goupil3.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Guerrier/guerrier0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Mage/mage0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/OptionMenu.spritefont</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/pv.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard0.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard1.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard2.png</File>
+    <File>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard3.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>curseurCombat.png</File>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File>Druide/druide0.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
@@ -36,7 +33,12 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
-    <File>Guerrier/guerrier0.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
