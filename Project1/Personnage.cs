@@ -15,8 +15,6 @@ namespace Haulberon
         public int Id { get; private set; }
         public string Nom { get; private set; }
         public int Pv_max { get; private set; }
-       
-        public Animation Animation;
         public int Defense { get; private set; }
         private int energie;
         public int Energie
@@ -28,9 +26,6 @@ namespace Haulberon
                 else energie = value;
             }
         }
-        public List<Competence> ListeCompetences { get; private set; }
-        public List<Modificateur> ListeModificateurs { get; set; }
-
         private decimal pv_restant;
         public decimal PvRestant
         {
@@ -48,7 +43,19 @@ namespace Haulberon
         public decimal Degats_infliges { get; private set; }
         public decimal Degats_infliges_reel { get; private set; }
 
+        Membre BrasGauche;
+        Membre BrasDroit;
+        Membre Jambes;
+
+        public Animation Animation;
         public float Vitesse { get; set; }
+       
+        public List<Competence> ListeCompetences { get; private set; }
+        public List<Modificateur> ListeModificateurs { get; set; }
+
+       
+
+        
 
         public Personnage(int Id, string Categorie)
         {
@@ -91,29 +98,6 @@ namespace Haulberon
             }
         }
 
-        //private IList<Personnage> ChoixCibles(IList<Personnage> ListeCibles, Competence CompetenceChoisie)
-        //{
-        //    List<Personnage> listeCiblesSelectionnee = new List<Personnage>();
-        //    if (CompetenceChoisie.EstMonocible)
-        //    {
-        //        if (ListeCibles.Count > 1)
-        //        {
-        //            int indiceCible = Program.UI.EcranChoixCible(ListeCibles);
-        //            listeCiblesSelectionnee.Add(ListeCibles[indiceCible]);
-        //        }
-        //        else
-        //        {
-        //            listeCiblesSelectionnee.Add(ListeCibles[0]);
-        //            Console.Clear();
-        //        }
-        //        return listeCiblesSelectionnee;
-        //    }
-        //    else
-        //    {
-        //        Console.Clear();
-        //        return ListeCibles;
-        //    }
-        //}
 
         public void AppliqueModificateur(Competence CompetenceChoisie)
         {
@@ -132,37 +116,6 @@ namespace Haulberon
             Cible.PvRestant += montantSoin;
             Console.WriteLine("  " + this.Nom + " soigne " + Cible.Nom + " de " + montantSoin + " PVs.");
         }
-
-        //public void Action(IList<Personnage> GroupeEnnemis, Competence CompetenceChoisie)
-        //{
-        //    List<Personnage> listeCibles = null;
-
-        //    switch (CompetenceChoisie.Type.ToUpper())
-        //    {
-        //        case "ATTAQUE":
-        //            listeCibles = ChoixCibles(GroupeEnnemis, CompetenceChoisie).ToList();
-        //            foreach (Personnage ennemi in listeCibles)
-        //            {
-        //                this.Attaque(ennemi, CompetenceChoisie);
-        //                if (ennemi.PvRestant <= 0) GroupeEnnemis.Remove(ennemi);
-        //            }
-        //            break;
-
-        //        case "MODIFICATEUR":
-        //            Console.Clear();
-        //            this.AppliqueModificateur(CompetenceChoisie);
-        //            break;
-
-        //        case "SOIN":
-        //            listeCibles = ChoixCibles(Program.ListePersonnages, CompetenceChoisie).ToList();
-        //            foreach (Personnage allie in listeCibles)
-        //            {
-        //                this.Soin(allie, CompetenceChoisie);
-        //            }
-        //            break;
-        //    }
-        //    CompetenceChoisie.MiseEnCooldown();
-        //}
 
         public void Attaque(Personnage Cible, Competence CompetenceChoisie, Random EntierAleatoire)
         {
