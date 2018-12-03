@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<collection>
+	<objet 
+		id="1" 
+		nom="Petite potion de restauration" 
+		description="Restaure 20 PVs à la cible et confère +50 de défense pendant 6 tours.">
+		<effet id="1" />
+		<effet id="3" />
+	</objet>
+	<objet
+		id="2"
+		nom="Parchemin de robustesse"
+		description="Confère +50 de défense pendant 6 tours.">
+		<effet id="3" />
+	</objet>
+	<objet
+		id="3"
+		nom="Grande potion de soin"
+		description="Restaure 60 PVs à la cible.">
+		<effet id="4" />
+	</objet>
+	<objet
+		id="4"
+		nom="Balle de maitre"
+		description="Attrapez les tous !">
+		<effet id="5" />
+	</objet>
+</collection>

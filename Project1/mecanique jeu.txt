@@ -1,0 +1,13 @@
+Choix personnage
+	Proposition groupes ennemis
+		Choix groupe
+			début combat
+				choix attaque
+					choix ennemi
+						degats inflige
+				ennemis attaque
+					degats subis
+				repeat
+			fin combat
+			loot
+	repeat

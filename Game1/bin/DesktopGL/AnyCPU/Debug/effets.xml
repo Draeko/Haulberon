@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<collection>
+	<effet id="1" statistique="PvRestant" valeur="20" duree="0" />
+	<effet id="2" statistique="PvRestant" valeur="-10" duree="0" />
+	<effet id="3" statistique="Defense" valeur="50" duree="6" />
+	<effet id="4" statistique="PvRestant" valeur="60" duree="0" />
+	<effet id="5" statistique="Id" valeur="0" duree="0" />
+</collection>

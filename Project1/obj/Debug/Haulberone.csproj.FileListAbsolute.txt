@@ -1,0 +1,7 @@
+F:\Dev\Project1\obj\Debug\Haulberone.csprojAssemblyReference.cache
+F:\Dev\Project1\obj\Debug\Haulberone.csproj.CoreCompileInputs.cache
+F:\Dev\Project1\obj\Debug\Project1.exe
+F:\Dev\Project1\obj\Debug\Project1.pdb
+F:\Dev\Project1\bin\Debug\Project1.exe.config
+F:\Dev\Project1\bin\Debug\Project1.exe
+F:\Dev\Project1\bin\Debug\Project1.pdb

@@ -1,0 +1,10 @@
+c:\users\jbeauduf\source\repos\Project1\Project1\obj\Debug\Project1.csproj.CoreCompileInputs.cache
+c:\users\jbeauduf\source\repos\Project1\Project1\bin\Debug\Project1.exe.config
+c:\users\jbeauduf\source\repos\Project1\Project1\bin\Debug\Project1.exe
+c:\users\jbeauduf\source\repos\Project1\Project1\bin\Debug\Project1.pdb
+c:\users\jbeauduf\source\repos\Project1\Project1\obj\Debug\Project1.exe
+c:\users\jbeauduf\source\repos\Project1\Project1\obj\Debug\Project1.pdb
+C:\Users\jbeauduf\source\repos\Project1\Project1\bin\Debug\CsvHelper.dll
+C:\Users\jbeauduf\source\repos\Project1\Project1\bin\Debug\CsvHelper.xml
+C:\Users\jbeauduf\source\repos\Project1\Project1\obj\Debug\Project1.csproj.CopyComplete
+C:\Users\jbeauduf\source\repos\Project1\Project1\obj\Debug\Project1.csprojAssemblyReference.cache
