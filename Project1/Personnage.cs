@@ -137,7 +137,7 @@ namespace Haulberon
             EffetDeLaCompetence(CompetenceChoisie.Nom, Cible, EntierAleatoire);
 
             this.Degats_infliges = degatsInfliges.Calcul();
-
+            this.Degats_infliges_reel = this.Degats_infliges;
             if (this.Degats_infliges > Cible.pv_restant) this.Degats_infliges_reel = Cible.PvRestant;
             Cible.PvRestant -= this.Degats_infliges_reel;
             if (Cible.PvRestant <= 0)
