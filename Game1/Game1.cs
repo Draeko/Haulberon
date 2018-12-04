@@ -38,7 +38,7 @@ namespace Game1
         SpriteBatch spriteBatch;
         public Ecran EtatDuJeu;
         
-        EcranMap EcranMap;
+        EcranHautMonde EcranMap;
         EcranCombat EcranCombat;
 
         public Game1()
@@ -102,8 +102,8 @@ namespace Game1
             ListePersonnages.Insert(0,Ennemi4);
             
             
-            EtatDuJeu = Ecran.EcranMap;
-            EcranMap = new EcranMap(Content, graphics);
+            EtatDuJeu = Ecran.HautMonde;
+            EcranMap = new EcranHautMonde(Content, graphics);
 
             base.Initialize();
         }
@@ -141,87 +141,27 @@ namespace Game1
                 Exit();
             switch (EtatDuJeu)
             {
-                case Ecran.EcranMap:
+                case Ecran.HautMonde:
                     EtatDuJeu = EcranMap.Update(graphics, gameTime);
                     break;
-                case Ecran.EcranChoixPersonnage:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu);
-
-                    // UpdateEcranCombatSelectionEntite(ListePersonnages.FindAll(x=>x.EstAdversaire == false));
+                case Ecran.ChoixPersonnage:
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
-                case Ecran.EcranChoixAction:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu);
-                    //UpdateEcranCombatAvecMenu();
+                case Ecran.ChoixAction:
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
-                case Ecran.EcranChoixCompetence:
-                    //UpdateEcranCombatAvecMenu();
+                case Ecran.ChoixCompetence:
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
-                case Ecran.EcranChoixCible:
-                    //UpdateEcranCombatSelectionEntite(ListePersonnages.FindAll(x=>x.EstAdversaire = true));
+                case Ecran.ChoixCible:
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
+                    break;
+                case Ecran.Inventaire:
+                    //EtatDuJeu = EcranInventaire.Update();
                     break;
             }
             base.Update(gameTime);
         }
-
-        //protected void UpdateEcranCombatAvecMenu()
-        //{
-        //    EtatClavier = Keyboard.GetState();
-
-        //    if (EtatClavier.IsKeyDown(Keys.Up) && PrecedentEtatClavier.IsKeyUp(Keys.Up))
-        //    {
-        //        if (EcranCombat.EtatCurseur > 0)
-        //        {
-        //            EcranCombat.EtatCurseur--;
-        //            EcranCombat.PositionCurseur = new Rectangle(EcranCombat.PositionCurseur.X, EcranCombat.PositionCurseur.Y - EcranCombat.Curseur.Height, EcranCombat.Curseur.Width, EcranCombat.Curseur.Height);
-        //        }
-        //    }
-
-        //    if (EtatClavier.IsKeyDown(Keys.Down) && PrecedentEtatClavier.IsKeyUp(Keys.Down))
-        //    {
-        //        if (EcranCombat.EtatCurseur < EcranCombat.Options.Count - 2)
-        //        {
-        //            EcranCombat.EtatCurseur++;
-        //            EcranCombat.PositionCurseur = new Rectangle(EcranCombat.PositionCurseur.X, EcranCombat.PositionCurseur.Y + EcranCombat.Curseur.Height, EcranCombat.Curseur.Width, EcranCombat.Curseur.Height);
-        //        }
-        //    }
-
-        //    if (EtatClavier.IsKeyDown(Keys.Enter) && PrecedentEtatClavier.IsKeyUp(Keys.Enter))
-        //    {
-        //        switch (EtatDuJeu)
-        //        {
-        //            case Ecran.EcranChoixPersonnage:
-        //                EcranCombat.Joueur = ListePersonnages[EcranCombat.EtatCurseur];
-        //                EtatDuJeu = Ecran.EcranChoixAction;
-        //                EcranCombat.ChoixDeLAction();
-        //                break;
-        //            //case Ecran.EcranChoixAction:
-        //            //    EcranCombat.ActionChoisie = EcranCombat.EtatCurseur;                        
-        //            //    switch(EcranCombat.ActionChoisie)
-        //            //    {
-        //            //        case (int)EcranCombat.Action.Attaque:
-        //            //            EtatDuJeu = Ecran.EcranChoixCompetence;
-        //            //            EcranCombat.ChoixDeLaCompetence();
-        //            //            break;
-        //            //        case (int)EcranCombat.Action.Soin:
-        //            //            break;
-        //            //        case (int)EcranCombat.Action.Modificateur:
-        //            //            break;
-        //            //    }
-                        
-        //            //    break;
-        //            case Ecran.EcranChoixCompetence:
-        //                EtatDuJeu = Ecran.EcranChoixCible;
-        //                EcranCombat.CompetenceJoueur = EcranCombat.Joueur.ListeCompetences[EcranCombat.EtatCurseur];
-        //                EcranCombat.ChoixDeLaCible(ListePersonnages);
-        //                break;
-        //            case Ecran.EcranChoixCible:
-                        
-        //                break;
-        //        }
-        //    }
-
-        //    PrecedentEtatClavier = EtatClavier;
-        //}
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -233,22 +173,25 @@ namespace Game1
 
             switch (EtatDuJeu)
             {
-                case Ecran.EcranMap:
+                case Ecran.HautMonde:
                     EcranMap.Draw(spriteBatch, Content, gameTime);
                     break;
-                case Ecran.EcranChoixPersonnage:
+                case Ecran.ChoixPersonnage:
                     if (EcranCombat == null) EcranCombat = new EcranCombat(Content, graphics, ListePersonnages, EtatDuJeu);
                     EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
                     break;
-                case Ecran.EcranChoixAction:
+                case Ecran.ChoixAction:
                     EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
-                    //DrawEcranCombat(gameTime);
                     break;
-                case Ecran.EcranChoixCompetence:
-                    //DrawEcranCombat(gameTime);
+                case Ecran.ChoixCompetence:
+                    EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
                     break;
-                case Ecran.EcranChoixCible:
-                    //DrawEcranCombat(gameTime);
+                case Ecran.ChoixCible:
+                    EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
+                    break;
+                case Ecran.Inventaire:
+                    //if (EcanInventaire == null) EcranInventaire = new EcranInventaire();
+                    //EcranInventaire.Draw();
                     break;
             }
             // TODO: Add your drawing code here

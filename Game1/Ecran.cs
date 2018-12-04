@@ -8,11 +8,12 @@ namespace Game1
 {
     public enum Ecran
     {
-        EcranMap,
-        EcranChoixPersonnage,
-        EcranChoixAction,
-        EcranChoixCompetence,
-        EcranChoixCible
-
+        HautMonde,
+        ChoixPersonnage,
+        ChoixAction,
+        ChoixCompetence,
+        ChoixCible,
+        Inventaire,
+        Menu
     }
 }

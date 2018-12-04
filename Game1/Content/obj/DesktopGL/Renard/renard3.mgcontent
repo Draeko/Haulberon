@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/Renard/renard3.png</SourceFile>
+  <SourceFile>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/Renard/renard3.png</SourceFile>
   <SourceTime>2018-11-23T23:37:57.9158318+01:00</SourceTime>
-  <DestFile>C:/Users/jbeauduf/source/repos/Project1/Game1/Content/bin/DesktopGL/Renard/renard3.xnb</DestFile>
-  <DestTime>2018-11-29T15:43:07.3190713+01:00</DestTime>
+  <DestFile>F:/Dev/CSharp/Haulberon/Haulberon/Game1/Content/bin/DesktopGL/Renard/renard3.xnb</DestFile>
+  <DestTime>2018-12-03T21:52:03.4807288+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-09-23T23:55:52+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

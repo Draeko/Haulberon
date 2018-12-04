@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Ecran.cs" />
     <Compile Include="EcranCombat.cs" />
-    <Compile Include="EcranMap.cs" />
+    <Compile Include="EcranHautMonde.cs" />
     <Compile Include="EmplacementOptionMenu.cs" />
     <Compile Include="EmplacementPersonnage.cs" />
     <Compile Include="Game1.cs" />
