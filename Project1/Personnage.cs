@@ -53,10 +53,6 @@ namespace Haulberon
         public List<Competence> ListeCompetences { get; private set; }
         public List<Modificateur> ListeModificateurs { get; set; }
 
-       
-
-        
-
         public Personnage(int Id, string Categorie)
         {
             XDocument doc = XDocument.Load("personnages.xml");
