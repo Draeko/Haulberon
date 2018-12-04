@@ -33,29 +33,29 @@ namespace Game1
 
         public List<EmplacementPersonnage> ListeEmplacementPersonnages;
         public List<EmplacementOptionMenu> ListeEmplacementOptionMenu;
-        #region Fenetre du combat
+
+        public Rectangle RectangleFenetreMenu;
         public Rectangle RectangleFenetreEnnemis;
+        public Rectangle PositionCurseurCombat;
+        public Rectangle PositionCurseur;
+
+        public Texture2D TextureFenetreMenu;
         public Texture2D TextureFenetreEnnemis;
+        public Texture2D Curseur;
         private Point DepartFenetreEnnemis;
 
         
 
         public Texture2D CurseurCombat;
-        public Rectangle PositionCurseurCombat;
-        public int EtatCurseurCombat;
-        #endregion
-
         
-        public Rectangle RectangleFenetreMenu;
-        public Texture2D TextureFenetreMenu;
         private Point DepartFenetreMenu;
         
         public List<Option> Options;
 
         KeyboardState PrecedentEtatClavier;
 
-        public Texture2D Curseur;
-        public Rectangle PositionCurseur;
+        
+        
         public int EtatCurseur;
 
         public enum Action
