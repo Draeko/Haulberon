@@ -14,6 +14,7 @@ namespace Game1
         ChoixCompetence,
         ChoixCible,
         Inventaire,
-        Menu
+        Menu,
+        ResolutionAttaque
     }
 }

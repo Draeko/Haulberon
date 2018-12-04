@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Haulberon;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -15,10 +16,13 @@ namespace Game1
         public string Texte;
         public Vector2 PositionTexte;
         public Rectangle PositionCurseur;
+        public Texture2D TextureCurseur;
+        public Competence Competence;
 
         public EmplacementOptionMenu(ContentManager Content, string texte)
         {
             Font = Content.Load<SpriteFont>("OptionMenu");
+            TextureCurseur = Content.Load<Texture2D>("CurseurMenu");
             this.Texte = texte;
         }
 
@@ -36,13 +40,13 @@ namespace Game1
 
         }
 
-        public void DefinirPositionCurseur(int LargeurCurseur, int HauteurCurseur)
+        public void DefinirPositionCurseur()
         {
             PositionCurseur = new Rectangle(
-                (int)PositionTexte.X - LargeurCurseur - 10,
-                (int)(PositionTexte.Y + Font.MeasureString(Texte).Y / 2 - HauteurCurseur / 2),
-                LargeurCurseur,
-                HauteurCurseur
+                (int)PositionTexte.X - TextureCurseur.Width - 10,
+                (int)(PositionTexte.Y + Font.MeasureString(Texte).Y / 2 - TextureCurseur.Height / 2),
+                TextureCurseur.Width,
+                TextureCurseur.Height
                 );
         }
     }

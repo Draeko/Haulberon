@@ -14,11 +14,13 @@ namespace Game1
     {
         public Texture2D TexturePersonnage;
         public Texture2D TexturePV;
+        public Texture2D TextureCurseur;
 
         public Vector2 PositionPersonnage;
-        public Rectangle PositionPV;
         public Vector2 PositionNom;
         public Vector2 PositionPVTexte;
+        public Rectangle PositionPV;
+        public Rectangle PositionCurseur;
 
         public SpriteFont Font;
         public Color ColorNom;
@@ -29,6 +31,7 @@ namespace Game1
         public EmplacementPersonnage(ContentManager Content, Personnage personnage, int PositionX, int PositionY)
         {
             this.Font = Content.Load<SpriteFont>("EcranCombat");
+            this.TextureCurseur = Content.Load<Texture2D>("CurseurCombatV2");
             this.TexturePV = Content.Load<Texture2D>("pv");
             this.ColorNom = Color.White;
             this.ColorPV = Color.White;
@@ -63,6 +66,14 @@ namespace Game1
                 this.Font.MeasureString(Personnage.Nom).X / 2),
                 this.PositionPV.Y -
                 this.Font.MeasureString(Personnage.Nom).Y - 5);
+
+            PositionCurseur = new Rectangle(
+                        (int)(this.PositionNom.X
+                            + Font.MeasureString(this.Personnage.Nom).X / 2
+                            - TextureCurseur.Width / 2),
+                        (int)this.PositionNom.Y - TextureCurseur.Height - 10,
+                        TextureCurseur.Width,
+                        TextureCurseur.Height);
         }
 
         public EmplacementPersonnage(ContentManager Content, string FontNom)

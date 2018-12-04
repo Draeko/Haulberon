@@ -55,6 +55,7 @@
     <Compile Include="CodeFile1.cs" />
     <Compile Include="Effet.cs" />
     <Compile Include="Inventaire.cs" />
+    <Compile Include="Membre.cs" />
     <Compile Include="Modificateur.cs" />
     <Compile Include="Personnage.cs" />
     <Compile Include="Combat.cs" />

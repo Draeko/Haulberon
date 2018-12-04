@@ -159,6 +159,9 @@ namespace Game1
                 case Ecran.Inventaire:
                     //EtatDuJeu = EcranInventaire.Update();
                     break;
+                case Ecran.ResolutionAttaque:
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
+                    break;
             }
             base.Update(gameTime);
         }
@@ -192,6 +195,9 @@ namespace Game1
                 case Ecran.Inventaire:
                     //if (EcanInventaire == null) EcranInventaire = new EcranInventaire();
                     //EcranInventaire.Draw();
+                    break;
+                case Ecran.ResolutionAttaque:
+                    EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
                     break;
             }
             // TODO: Add your drawing code here
