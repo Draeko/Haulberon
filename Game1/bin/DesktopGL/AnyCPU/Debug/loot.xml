@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<collection>
-	<loot id="1" chance="10" objetId="1" bestiaireId="1" />
-	<loot id="2" chance="10" objetId="3" bestiaireId="5" />
-</collection>
