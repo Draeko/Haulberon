@@ -23,11 +23,6 @@ namespace Game1
         }
     }
 
-
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
-    /// 
     public class Game1 : Game
     {
         Random EntierAleatoire;
@@ -115,10 +110,7 @@ namespace Game1
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
-            
+            spriteBatch = new SpriteBatch(GraphicsDevice);            
         }
 
         /// <summary>
@@ -139,28 +131,19 @@ namespace Game1
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
             switch (EtatDuJeu)
             {
                 case Ecran.HautMonde:
                     EtatDuJeu = EcranMap.Update(graphics, gameTime);
                     break;
-                case Ecran.ChoixPersonnage:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
-                    break;
-                case Ecran.ChoixAction:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
-                    break;
-                case Ecran.ChoixCompetence:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
-                    break;
-                case Ecran.ChoixCible:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
+                case Ecran.Combat:
+                    if(EcranCombat == null || EcranCombat.EtatDuCombat == Ecran.Fin)
+                        EcranCombat = new EcranCombat(Content, graphics, ListePersonnages);
+                    EtatDuJeu = EcranCombat.Update(ListePersonnages, Content);
                     break;
                 case Ecran.Inventaire:
                     //EtatDuJeu = EcranInventaire.Update();
-                    break;
-                case Ecran.ResolutionAttaque:
-                    EtatDuJeu = EcranCombat.Update(ListePersonnages, EtatDuJeu, Content);
                     break;
             }
             base.Update(gameTime);
@@ -179,25 +162,13 @@ namespace Game1
                 case Ecran.HautMonde:
                     EcranMap.Draw(spriteBatch, Content, gameTime);
                     break;
-                case Ecran.ChoixPersonnage:
-                    if (EcranCombat == null) EcranCombat = new EcranCombat(Content, graphics, ListePersonnages, EtatDuJeu);
-                    EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
-                    break;
-                case Ecran.ChoixAction:
-                    EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
-                    break;
-                case Ecran.ChoixCompetence:
-                    EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
-                    break;
-                case Ecran.ChoixCible:
+                case Ecran.Combat:
+                    if (EcranCombat == null) EcranCombat = new EcranCombat(Content, graphics, ListePersonnages);
                     EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
                     break;
                 case Ecran.Inventaire:
                     //if (EcanInventaire == null) EcranInventaire = new EcranInventaire();
                     //EcranInventaire.Draw();
-                    break;
-                case Ecran.ResolutionAttaque:
-                    EcranCombat.Draw(spriteBatch, Content, gameTime, ListePersonnages, EtatDuJeu);
                     break;
             }
             // TODO: Add your drawing code here

@@ -8,13 +8,18 @@ namespace Game1
 {
     public enum Ecran
     {
+        //Overworld
         HautMonde,
+        Inventaire,
+        Menu,
+        Combat,
+        //combat
+        Debut,
+        Fin,
         ChoixPersonnage,
         ChoixAction,
         ChoixCompetence,
-        ChoixCible,
-        Inventaire,
-        Menu,
+        ChoixCible,        
         ResolutionAttaque
     }
 }

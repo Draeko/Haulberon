@@ -52,9 +52,12 @@ namespace Game1
 
         KeyboardState PrecedentEtatClavier;
 
+        public Ecran EtatDuCombat;
+
         #region Constructeur
-        public EcranCombat(ContentManager Content, GraphicsDeviceManager graphics, IList<Personnage> ListePersonnages, Ecran EtatDuJeu)
+        public EcranCombat(ContentManager Content, GraphicsDeviceManager graphics, IList<Personnage> ListePersonnages)
         {
+            EtatDuCombat = Ecran.Debut;
             Font = Content.Load<SpriteFont>("EcranCombat");
             TextureCurseurMenu = Content.Load<Texture2D>("CurseurMenu");
             TextureCurseurPersonnagesControles = Content.Load<Texture2D>("curseurCombatV2");
@@ -63,7 +66,6 @@ namespace Game1
             TextureFenetreEnnemis = Content.Load<Texture2D>("FenetreEcranCombat");
             PrecedentEtatClavier = new KeyboardState();
             ListeEmplacementPersonnages = new List<EmplacementPersonnage>();
-            ListeEmplacementOptionMenu = new List<EmplacementOptionMenu>();
 
             //Fenetre du combat
             DepartFenetreEnnemis = new Point(0, 0);
@@ -86,7 +88,7 @@ namespace Game1
                 {
                     int NombreEmplacementUtilise = ListeEmplacementPersonnages.Count(e => e.Personnage.EstAdversaire == true);
                     a = RectangleFenetreEnnemis.Width / NombrePersonnageAdverse;
-                    b = NombrePersonnageAdverse - NombreEmplacementUtilise;                    
+                    b = NombrePersonnageAdverse - NombreEmplacementUtilise;
                     y = RectangleFenetreEnnemis.Height / 3;
                 }
                 else
@@ -101,63 +103,40 @@ namespace Game1
 
                 EmplacementPersonnage emplacement = new EmplacementPersonnage(Content, personnage, x, y);
                 ListeEmplacementPersonnages.Add(emplacement);
-            }
-
-            //position des curseurCombat
-            PositionCurseurPersonnagesControles = ListeEmplacementPersonnages.Where(e=>e.Personnage.EstAdversaire == false).ToList()[0].PositionCurseur;
-            PositionCurseurPersonnagesEnnemis = ListeEmplacementPersonnages.Where(e=>e.Personnage.EstAdversaire == true).ToList()[0].PositionCurseur;
+            }            
 
             //Fenetre Menu occupe le quart inférieur de l'écran
             DepartFenetreMenu = new Point(0, graphics.PreferredBackBufferHeight * 3 / 4);
             int Largeur = graphics.PreferredBackBufferWidth;
             int Hauteur = graphics.PreferredBackBufferHeight / 4;
             RectangleFenetreMenu = new Rectangle(DepartFenetreMenu.X, DepartFenetreMenu.Y, Largeur, Hauteur);
+        }
+        #endregion
 
-            ListeEmplacementOptionMenu.Add(new EmplacementOptionMenu(Content, "Attaquer", 
-                DepartFenetreMenu.X + RectangleFenetreMenu.Width / 3, 
+        private void GenerationsDesActions(ContentManager Content)
+        {
+            ListeEmplacementOptionMenu = new List<EmplacementOptionMenu>();
+            ListeEmplacementOptionMenu.Add(new EmplacementOptionMenu(Content, "Attaquer",
+                DepartFenetreMenu.X + RectangleFenetreMenu.Width / 3,
                 DepartFenetreMenu.Y + RectangleFenetreMenu.Height / 3,
                 TextureCurseurMenu.Width,
                 TextureCurseurMenu.Height));
             ListeEmplacementOptionMenu.Add(new EmplacementOptionMenu(Content, "Inventaire",
-                DepartFenetreMenu.X + RectangleFenetreMenu.Width * 2/3,
+                DepartFenetreMenu.X + RectangleFenetreMenu.Width * 2 / 3,
                 DepartFenetreMenu.Y + RectangleFenetreMenu.Height / 3,
                 TextureCurseurMenu.Width,
                 TextureCurseurMenu.Height));
             ListeEmplacementOptionMenu.Add(new EmplacementOptionMenu(Content, "Menu",
                 DepartFenetreMenu.X + RectangleFenetreMenu.Width / 3,
-                DepartFenetreMenu.Y + RectangleFenetreMenu.Height * 2/3,
+                DepartFenetreMenu.Y + RectangleFenetreMenu.Height * 2 / 3,
                 TextureCurseurMenu.Width,
                 TextureCurseurMenu.Height));
             ListeEmplacementOptionMenu.Add(new EmplacementOptionMenu(Content, "Retour",
-                DepartFenetreMenu.X + RectangleFenetreMenu.Width * 2/3,
-                DepartFenetreMenu.Y + RectangleFenetreMenu.Height * 2/3,
+                DepartFenetreMenu.X + RectangleFenetreMenu.Width * 2 / 3,
+                DepartFenetreMenu.Y + RectangleFenetreMenu.Height * 2 / 3,
                 TextureCurseurMenu.Width,
                 TextureCurseurMenu.Height));
             PositionCurseurMenu = ListeEmplacementOptionMenu[0].PositionCurseur;
-                
-        }
-        #endregion
-
-        private void DefinirPositionDesActions()
-        {
-            int a = RectangleFenetreMenu.Width / 4;
-            int b = RectangleFenetreMenu.Height / 3;
-            int compteurX = 1;
-            int compteurY = 1;
-            foreach (EmplacementOptionMenu option in ListeEmplacementOptionMenu)
-            {
-                if (compteurX == 4)
-                {
-                    compteurX = 1;
-                    compteurY++;
-                }
-                int x = DepartFenetreMenu.X + a * compteurX;
-                int y = DepartFenetreMenu.Y + b * compteurY;
-
-                option.PositionTexte = new Vector2(x,y);
-                option.DefinirPositionCurseur();
-                compteurX++;
-            }
         }
 
         #region Draw
@@ -171,17 +150,19 @@ namespace Game1
             //Affichage des personnages
             DrawPersonnages(spriteBatch, Content, gameTime, ListePersonnages);
             //Affichage du curseurCombat
-            DrawCurseurCombat(spriteBatch, EtatDuJeu);
+            DrawCurseurCombat(spriteBatch);
             //Affichage du Menu
-            DrawMenu(spriteBatch, Content, gameTime, EtatDuJeu);
+            DrawMenu(spriteBatch, Content, gameTime);
 
             spriteBatch.End();
         }
 
-        private void DrawMenu(SpriteBatch spriteBatch, ContentManager Content, GameTime gameTime, Ecran EtatDuJeu)
+        private void DrawMenu(SpriteBatch spriteBatch, ContentManager Content, GameTime gameTime)
         {
-            switch (EtatDuJeu)
+            switch (EtatDuCombat)
             {
+                case Ecran.Debut:
+                    break;
                 case Ecran.ChoixPersonnage:
                     DrawChoixPersonnage(spriteBatch, "Selection du personnage.");                    
                     break;
@@ -308,11 +289,11 @@ namespace Game1
             }
         }
 
-        private void DrawCurseurCombat(SpriteBatch spriteBatch, Ecran EtatDuJeu)
+        private void DrawCurseurCombat(SpriteBatch spriteBatch)
         {
-            if (EtatDuJeu == Ecran.ChoixPersonnage)
+            if (EtatDuCombat == Ecran.ChoixPersonnage)
                 spriteBatch.Draw(TextureCurseurPersonnagesControles, PositionCurseurPersonnagesControles, Color.White);
-            if (EtatDuJeu == Ecran.ChoixCible)
+            if (EtatDuCombat == Ecran.ChoixCible)
                 spriteBatch.Draw(TextureCurseurPersonnagesEnnemis, PositionCurseurPersonnagesEnnemis, Color.White);
         }
 
@@ -323,27 +304,37 @@ namespace Game1
         #endregion
 
         #region Update
-        public Ecran Update(IEnumerable<Personnage> ListePersonnages, Ecran EtatDuJeu, ContentManager Content)
+        public Ecran Update(IEnumerable<Personnage> ListePersonnages, ContentManager Content)
         {
-            switch(EtatDuJeu)
+            switch(EtatDuCombat)
             {
+                case Ecran.Debut:                    
+                    PositionCurseurPersonnagesControles = ListeEmplacementPersonnages.Where(e => e.Personnage.EstAdversaire == false).ToList()[0].PositionCurseur;
+                    PositionCurseurPersonnagesEnnemis = ListeEmplacementPersonnages.Where(e => e.Personnage.EstAdversaire == true).ToList()[0].PositionCurseur;
+                    EtatDuCombat = Ecran.ChoixPersonnage;
+                    break;
                 case Ecran.ChoixPersonnage:
                     var ListePersonnagesControles = ListeEmplacementPersonnages.Where(e => e.Personnage.EstAdversaire == false);
-                    return UpdateSelectionEntite(ListePersonnagesControles, EtatDuJeu, PositionCurseurPersonnagesControles);
+                    UpdateSelectionEntite(ListePersonnagesControles, PositionCurseurPersonnagesControles, Content);
+                    break;
                 case Ecran.ChoixAction:
-                    return UpdateSelectionOption(Content, EtatDuJeu);
-                case Ecran.ChoixCompetence:                    
-                    return UpdateSelectionOption(Content, EtatDuJeu);
+                    UpdateSelectionOption(Content);
+                    break;
+                case Ecran.ChoixCompetence:
+                    UpdateSelectionOption(Content);
+                    break;
                 case Ecran.ChoixCible:
                     var ListePersonnagesEnnemis = ListeEmplacementPersonnages.Where(e=>e.Personnage.EstAdversaire == true);
-                    return UpdateSelectionEntite(ListePersonnagesEnnemis, EtatDuJeu, PositionCurseurPersonnagesEnnemis);
+                    UpdateSelectionEntite(ListePersonnagesEnnemis, PositionCurseurPersonnagesEnnemis, Content);
+                    break;
                 case Ecran.ResolutionAttaque:
-                    return Ecran.ChoixPersonnage;
+                    EtatDuCombat = Ecran.Debut;
+                    break;
             }
-            return EtatDuJeu;            
+            return Ecran.Combat;            
         }
 
-        private Ecran UpdateSelectionEntite(IEnumerable<EmplacementPersonnage> ListeEmplacement, Ecran EtatDuJeu, Rectangle PositionCurseur)
+        private Ecran UpdateSelectionEntite(IEnumerable<EmplacementPersonnage> ListeEmplacement, Rectangle PositionCurseur, ContentManager Content)
         {
             KeyboardState EtatClavier = Keyboard.GetState();
             List<EmplacementPersonnage> listeEmplacements = new List<EmplacementPersonnage>();
@@ -370,10 +361,12 @@ namespace Game1
             if (EtatClavier.IsKeyDown(Keys.Enter) && PrecedentEtatClavier.IsKeyUp(Keys.Enter))
             {
                 PrecedentEtatClavier = EtatClavier;
-                switch (EtatDuJeu)
+                switch (EtatDuCombat)
                 {
                     case Ecran.ChoixPersonnage:
-                        return Ecran.ChoixAction;
+                        EtatDuCombat = Ecran.ChoixAction;
+                        GenerationsDesActions(Content);
+                        break;
                     case Ecran.ChoixCible:
                         Personnage A, B;
                         Competence C;
@@ -381,14 +374,15 @@ namespace Game1
                         B = ListeEmplacementPersonnages.Where(p => p.PositionCurseur == PositionCurseurPersonnagesEnnemis).Single().Personnage;
                         C = A.ListeCompetences.Where(c => c.Nom == ListeEmplacementOptionMenu.Where(o => o.PositionCurseur == PositionCurseurMenu).Single().Texte).Single();
                         A.Attaque(B, C, new Random());
-                        return Ecran.ResolutionAttaque;
+                        EtatDuCombat = Ecran.ResolutionAttaque;
+                        break;
                 }
             }
             PrecedentEtatClavier = EtatClavier;
-            return EtatDuJeu;
+            return Ecran.Combat;
         }
 
-        private Ecran UpdateSelectionOption(ContentManager Content, Ecran EtatDuJeu)
+        private Ecran UpdateSelectionOption(ContentManager Content)
         {
             KeyboardState EtatClavier = Keyboard.GetState();
 
@@ -396,7 +390,13 @@ namespace Game1
             if (EtatClavier.IsKeyDown(Keys.Left) && PrecedentEtatClavier.IsKeyUp(Keys.Left))
             {
                 // X--
-                var L = ListeEmplacementOptionMenu.Where(x => x.PositionCurseur.X < PositionCurseurMenu.X && x.PositionCurseur.Y == PositionCurseurMenu.Y).OrderBy(o => o.PositionCurseur.X).Reverse().ToList();
+                var L = ListeEmplacementOptionMenu.Where(
+                    x => x.PositionCurseur.X < PositionCurseurMenu.X 
+                    && x.PositionCurseur.Y == PositionCurseurMenu.Y)
+                    .OrderBy(o => o.PositionCurseur.X)
+                    .Reverse()
+                    .ToList();
+
                 if (L.Count > 0)
                 {
                     PositionCurseurMenu = L[0].PositionCurseur;
@@ -406,7 +406,12 @@ namespace Game1
             if (EtatClavier.IsKeyDown(Keys.Right) && PrecedentEtatClavier.IsKeyUp(Keys.Right))
             {
                 // X++
-                var L = ListeEmplacementOptionMenu.Where(x => x.PositionCurseur.X > PositionCurseurMenu.X && x.PositionCurseur.Y == PositionCurseurMenu.Y).OrderBy(o => o.PositionCurseur.X).ToList();
+                var L = ListeEmplacementOptionMenu.Where(
+                    x => x.PositionCurseur.X > PositionCurseurMenu.X 
+                    && x.PositionCurseur.Y == PositionCurseurMenu.Y)
+                    .OrderBy(o => o.PositionCurseur.X)
+                    .ToList();
+
                 if (L.Count > 0)
                 {
                     PositionCurseurMenu = L[0].PositionCurseur;
@@ -416,7 +421,12 @@ namespace Game1
             if (EtatClavier.IsKeyDown(Keys.Down) && PrecedentEtatClavier.IsKeyUp(Keys.Down))
             {
                 // Y++
-                var L = ListeEmplacementOptionMenu.Where(x => x.PositionCurseur.Y > PositionCurseurMenu.Y && x.PositionCurseur.X == PositionCurseurMenu.X).OrderBy(o => o.PositionCurseur.Y).ToList();
+                var L = ListeEmplacementOptionMenu.Where(
+                    x => x.PositionCurseur.Y > PositionCurseurMenu.Y 
+                    && x.PositionCurseur.X == PositionCurseurMenu.X)
+                    .OrderBy(o => o.PositionCurseur.Y)
+                    .ToList();
+
                 if (L.Count > 0)
                 {
                     PositionCurseurMenu = L[0].PositionCurseur;
@@ -426,7 +436,13 @@ namespace Game1
             if (EtatClavier.IsKeyDown(Keys.Up) && PrecedentEtatClavier.IsKeyUp(Keys.Up))
             {
                 // Y--
-                var L = ListeEmplacementOptionMenu.Where(x => x.PositionCurseur.Y < PositionCurseurMenu.Y && x.PositionCurseur.X == PositionCurseurMenu.X).OrderBy(o => o.PositionCurseur.Y).Reverse().ToList();
+                var L = ListeEmplacementOptionMenu.Where(
+                    x => x.PositionCurseur.Y < PositionCurseurMenu.Y 
+                    && x.PositionCurseur.X == PositionCurseurMenu.X)
+                    .OrderBy(o => o.PositionCurseur.Y)
+                    .Reverse()
+                    .ToList();
+
                 if (L.Count > 0)
                 {
                     PositionCurseurMenu = L[0].PositionCurseur;
@@ -437,7 +453,7 @@ namespace Game1
             if (EtatClavier.IsKeyDown(Keys.Enter) && PrecedentEtatClavier.IsKeyUp(Keys.Enter))
             {
                 PrecedentEtatClavier = EtatClavier;
-                switch (EtatDuJeu)
+                switch (EtatDuCombat)
                 {
                     case Ecran.ChoixAction:
                         switch(ListeEmplacementOptionMenu.Where(x=>x.PositionCurseur == PositionCurseurMenu).ToList()[0].Texte)
@@ -451,19 +467,43 @@ namespace Game1
                                 }
                                 DefinirPositionDesActions();
                                 PositionCurseurMenu = ListeEmplacementOptionMenu[0].PositionCurseur;
-                                return Ecran.ChoixCompetence;
-                            case "Inventaire": return Ecran.Inventaire;
-                            case "Menu": return Ecran.Menu;
-                            case "Retour": return Ecran.ChoixPersonnage;
+                                EtatDuCombat = Ecran.ChoixCompetence;
+                                break;
+                            case "Inventaire": EtatDuCombat = Ecran.Inventaire; break;
+                            case "Menu": EtatDuCombat = Ecran.Menu; break;
+                            case "Retour": EtatDuCombat =  Ecran.ChoixPersonnage; break;
                         }
                         break;
                     case Ecran.ChoixCompetence:
-                        return Ecran.ChoixCible;
+                        EtatDuCombat = Ecran.ChoixCible;
+                        break;
                 }
             }
             PrecedentEtatClavier = EtatClavier;
-            return EtatDuJeu;
+            return Ecran.Combat;
         }
         #endregion
+
+        private void DefinirPositionDesActions()
+        {
+            int a = RectangleFenetreMenu.Width / 4;
+            int b = RectangleFenetreMenu.Height / 3;
+            int compteurX = 1;
+            int compteurY = 1;
+            foreach (EmplacementOptionMenu option in ListeEmplacementOptionMenu)
+            {
+                if (compteurX == 4)
+                {
+                    compteurX = 1;
+                    compteurY++;
+                }
+                int x = DepartFenetreMenu.X + a * compteurX;
+                int y = DepartFenetreMenu.Y + b * compteurY;
+
+                option.PositionTexte = new Vector2(x, y);
+                option.DefinirPositionCurseur();
+                compteurX++;
+            }
+        }
     }
 }

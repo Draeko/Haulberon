@@ -63,7 +63,7 @@ namespace Game1
 
             if (JoueurMap.Rectangle.Intersects(EnnemiMap.Rectangle))
             {
-                return Ecran.ChoixPersonnage;
+                return Ecran.Combat;
             }
             return Ecran.HautMonde;
         }
